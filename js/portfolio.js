@@ -10,15 +10,15 @@ window.MIU_PORTFOLIO = {
       id: "banguela",
       title: "Banguela",
       category: "Personagens",
-      label: "Projeto realizado",
+      label: "Destaque",
       image: "images/produtos/banguela.jpeg",
       imageAlt: "Peca do personagem Banguela produzida em impressao 3D",
       description:
-        "Uma referencia visual forte para quem quer personagens com acabamento bonito e presenca real na decoracao.",
+        "Peca decorativa com presenca forte e acabamento que valoriza o personagem sem perder a leitura dos detalhes.",
       details: [
-        "Projeto geek com destaque visual imediato.",
-        "Boa referencia para pecas decorativas sob medida.",
-        "Mostra nivel de acabamento e leitura do personagem."
+        "Otima inspiracao para presentes, estantes e setups geek.",
+        "Mostra bom equilibrio entre silhueta marcante e acabamento limpo.",
+        "Serve como base para pedidos inspirados em personagens iconicos."
       ],
       featured: true
     },
@@ -26,15 +26,15 @@ window.MIU_PORTFOLIO = {
       id: "hunterxhunter",
       title: "Hunter x Hunter",
       category: "Anime",
-      label: "Projeto realizado",
+      label: "Destaque",
       image: "images/produtos/hunterxhunter.jpeg",
       imageAlt: "Peca inspirada em Hunter x Hunter produzida em impressao 3D",
       description:
-        "Exemplo de peca tematica para colecao, presente criativo ou decoracao personalizada com identidade forte.",
+        "Referencia de anime transformada em peca de impacto para colecao, presente ou decoracao personalizada.",
       details: [
-        "Boa opcao para pedidos inspirados em anime.",
-        "Detalhes pensados para valorizar o tema escolhido.",
-        "Serve como base para novas referencias personalizadas."
+        "Boa inspiracao para projetos baseados em manga e anime.",
+        "Composicao pensada para destacar contraste e identidade visual.",
+        "Funciona bem como ponto de partida para novas versoes personalizadas."
       ],
       featured: true
     },
@@ -42,15 +42,15 @@ window.MIU_PORTFOLIO = {
       id: "yoshi",
       title: "Yoshi",
       category: "Games",
-      label: "Projeto realizado",
+      label: "Destaque",
       image: "images/produtos/yoshi.jpeg",
       imageAlt: "Peca do personagem Yoshi produzida em impressao 3D",
       description:
-        "Projeto colorido e marcante para mostrar como personagens de games podem virar pecas com bastante personalidade.",
+        "Uma peca vibrante que mostra como personagens de games podem ganhar volume, cor e presenca fora da tela.",
       details: [
-        "Referencia forte para pecas de jogos e personagens.",
-        "Bom exemplo de presenca visual em estante, quarto ou setup.",
-        "Tambem aparece em video para mostrar melhor o volume final."
+        "Boa referencia para pedidos com visual ludico e marcante.",
+        "Fica muito bem em quarto, estante ou setup.",
+        "Tambem aparece em video para revelar melhor o acabamento final."
       ],
       featured: true
     },
@@ -58,15 +58,15 @@ window.MIU_PORTFOLIO = {
       id: "jack-skellington",
       title: "Suporte Alexa Jack Skellington",
       category: "Decoracao Geek",
-      label: "Projeto realizado",
+      label: "Grande procura",
       image: "images/produtos/jack.png",
       imageAlt: "Suporte para Alexa inspirado em Jack Skellington",
       description:
-        "Uma peca funcional com visual criativo, pensada para decorar e organizar o ambiente ao mesmo tempo.",
+        "Suporte tematico que organiza a Alexa e ainda vira destaque na decoracao do ambiente.",
       details: [
-        "Mistura utilidade com identidade visual forte.",
-        "Boa referencia para suporte tematico e decorativo.",
-        "Mostra como a personalizacao pode entrar no dia a dia."
+        "Une utilidade e identidade visual em uma peca so.",
+        "Boa inspiracao para suportes tematicos e decorativos.",
+        "Mostra como a personalizacao pode entrar na rotina com estilo."
       ],
       featured: false
     },
@@ -74,15 +74,15 @@ window.MIU_PORTFOLIO = {
       id: "mao-caveira",
       title: "Suporte Alexa Mao Caveira",
       category: "Decoracao Geek",
-      label: "Projeto realizado",
+      label: "Grande procura",
       image: "images/produtos/maocaveira.png",
       imageAlt: "Suporte em formato de mao caveira para Alexa",
       description:
-        "Um projeto com visual impactante para transformar um item funcional em parte da decoracao do ambiente.",
+        "Peca com personalidade forte para transformar um item funcional em parte da decoracao.",
       details: [
-        "Exemplo de tema forte com boa leitura visual.",
-        "Combina decoracao, utilidade e presenca.",
-        "Pode inspirar novos suportes personalizados."
+        "Tema de impacto com leitura visual imediata.",
+        "Mistura decoracao, utilidade e presenca no ambiente.",
+        "Otimo ponto de partida para novos suportes personalizados."
       ],
       featured: false
     },
@@ -90,26 +90,26 @@ window.MIU_PORTFOLIO = {
       id: "suporte-vr",
       title: "Suporte para Headset VR",
       category: "Organizacao",
-      label: "Projeto realizado",
+      label: "Grande procura",
       image: "images/produtos/vr.png",
       imageAlt: "Suporte para headset VR e controles produzido em impressao 3D",
       description:
-        "Uma solucao funcional para organizar headset e controles em um unico suporte, com boa presenca visual e acabamento limpo.",
+        "Base organizadora para headset e controles, pensada para deixar o setup limpo, firme e visualmente bem resolvido.",
       details: [
-        "Boa referencia para setups gamers e organizacao de bancada.",
-        "Mostra uma peca funcional com leitura visual limpa e firme.",
-        "Pode inspirar novos suportes e bases sob medida."
+        "Boa referencia para organizacao de bancada gamer.",
+        "Mostra uma peca funcional com acabamento limpo e estavel.",
+        "Pode inspirar novos suportes e bases feitas sob medida."
       ],
       featured: false
     }
   ],
   featuredVideo: {
-    title: "Yoshi em video",
+    title: "Yoshi em movimento",
     description:
-      "O video ajuda a mostrar volume, cor e presenca da peca pronta de um jeito que a foto sozinha nao entrega.",
+      "No video, fica mais facil perceber volume, luz e presenca da peca pronta de um jeito que a foto sozinha nao mostra.",
     video: "images/produtos/yoshi.mp4",
     poster: "images/produtos/yoshi.jpeg",
     ctaMessage:
-      "Ola! Vi o video do Yoshi no portfolio da Miu Lab 3D e quero um projeto nesse estilo."
+      "Ola! Vi o video do Yoshi no portfolio da Miu Lab 3D e quero uma peca nesse estilo."
   }
 };

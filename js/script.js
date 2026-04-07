@@ -145,7 +145,7 @@ function createPortfolioCard(item) {
     '      <a class="button button--primary" href="' +
       buildWhatsAppUrl(message) +
       '" target="_blank" rel="noreferrer">',
-    "        Quero algo assim",
+    "        Pedir algo parecido",
     "      </a>",
     "    </div>",
     "  </div>",
@@ -187,7 +187,7 @@ function openLightbox(itemId) {
   lightboxImage.src = item.image;
   lightboxImage.alt = item.imageAlt || item.title;
   lightboxTitle.textContent = item.title;
-  lightboxCategory.textContent = item.category;
+  lightboxCategory.textContent = (item.label || "Projeto realizado") + " • " + item.category;
   lightboxDescription.textContent = item.description;
 
   lightbox.hidden = false;
