@@ -311,8 +311,8 @@ section {
 
 .hero::before {
   background:
-    linear-gradient(90deg, rgba(23, 42, 59, 0.94) 0%, rgba(23, 42, 59, 0.8) 42%, rgba(23, 42, 59, 0.48) 100%),
-    url("../images/banner.png") right 6% center / 48% auto no-repeat;
+    linear-gradient(90deg, rgba(23, 42, 59, 0.96) 0%, rgba(23, 42, 59, 0.88) 36%, rgba(23, 42, 59, 0.64) 58%, rgba(23, 42, 59, 0.2) 100%),
+    url("../images/banner.png") right 4% center / 56% auto no-repeat;
   content: "";
   inset: 0;
   position: absolute;
@@ -1421,8 +1421,8 @@ section {
 
   .hero::before {
     background:
-      linear-gradient(90deg, rgba(23, 42, 59, 0.95) 0%, rgba(23, 42, 59, 0.84) 48%, rgba(23, 42, 59, 0.58) 100%),
-      url("../images/banner.png") right center / 54% auto no-repeat;
+      linear-gradient(90deg, rgba(23, 42, 59, 0.96) 0%, rgba(23, 42, 59, 0.88) 48%, rgba(23, 42, 59, 0.64) 68%, rgba(23, 42, 59, 0.28) 100%),
+      url("../images/banner.png") right -10px center / 64% auto no-repeat;
   }
 
   .value-grid,
@@ -1559,8 +1559,8 @@ section {
 
   .hero::before {
     background:
-      linear-gradient(180deg, rgba(23, 42, 59, 0.92) 0%, rgba(23, 42, 59, 0.8) 40%, rgba(23, 42, 59, 0.9) 100%),
-      url("../images/banner.png") center bottom / 82% auto no-repeat;
+      linear-gradient(180deg, rgba(23, 42, 59, 0.94) 0%, rgba(23, 42, 59, 0.84) 36%, rgba(23, 42, 59, 0.92) 100%),
+      url("../images/banner.png") center bottom / 108% auto no-repeat;
   }
 
   .hero h1,

@@ -187,7 +187,7 @@ function openLightbox(itemId) {
   lightboxImage.src = item.image;
   lightboxImage.alt = item.imageAlt || item.title;
   lightboxTitle.textContent = item.title;
-  lightboxCategory.textContent = (item.label || "Projeto realizado") + " • " + item.category;
+  lightboxCategory.textContent = (item.label || "Projeto realizado") + " - " + item.category;
   lightboxDescription.textContent = item.description;
 
   lightbox.hidden = false;
