@@ -1,119 +1,321 @@
-// ========= CONFIG WHATSAPP =========
-const WHATSAPP_NUMBER = "+5532998406067";
+const WHATSAPP_NUMBER = "5532998406067";
+const ALL_FILTER_LABEL = "Todos";
 
-// ========= ELEMENTOS =========
-const track = document.getElementById("carouselTrack");
-const dotsWrap = document.getElementById("carouselDots");
+const portfolioData = window.MIU_PORTFOLIO || {};
+const portfolioItems = Array.isArray(portfolioData.items) ? [...portfolioData.items] : [];
+const featuredVideoData = portfolioData.featuredVideo || null;
 
-function getStep() {
-  const firstCard = track.querySelector(".product-card");
-  if (!firstCard) return 0;
+const state = {
+  activeCategory: ALL_FILTER_LABEL
+};
 
-  const gap = 28;
-  return firstCard.offsetWidth + gap;
+const portfolioGrid = document.getElementById("portfolioGrid");
+const portfolioSummary = document.getElementById("portfolioSummary");
+const portfolioFilters = document.getElementById("portfolioFilters");
+const menuToggle = document.querySelector(".menu-toggle");
+const siteNav = document.getElementById("site-nav");
+const siteHeader = document.querySelector(".site-header");
+const heroPortfolioCount = document.getElementById("heroPortfolioCount");
+const currentYear = document.getElementById("currentYear");
+
+const featuredVideo = document.getElementById("featuredVideo");
+const featuredVideoTitle = document.getElementById("featuredVideoTitle");
+const featuredVideoDescription = document.getElementById("featuredVideoDescription");
+const featuredVideoCta = document.getElementById("featuredVideoCta");
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxCategory = document.getElementById("lightboxCategory");
+const lightboxTitle = document.getElementById("lightboxTitle");
+const lightboxDescription = document.getElementById("lightboxDescription");
+const lightboxClose = document.getElementById("lightboxClose");
+
+function buildWhatsAppUrl(message) {
+  return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
 }
 
-function getTotalPages() {
-  const step = getStep();
-  if (!step) return 0;
+function getSortedPortfolio(items) {
+  return [...items].sort((first, second) => {
+    if (Boolean(first.featured) !== Boolean(second.featured)) {
+      return first.featured ? -1 : 1;
+    }
 
-  // quantos "cliques" existem dentro do scroll
-  const total = Math.round(track.scrollWidth / step);
-  const visible = Math.round(track.clientWidth / step);
-
-  // páginas = total de cards possíveis - quantos aparecem ao mesmo tempo + 1
-  return Math.max(1, total - visible + 1);
+    return first.title.localeCompare(second.title, "pt-BR");
+  });
 }
 
-function getActivePage() {
-  const step = getStep();
-  if (!step) return 0;
+function getCategories() {
+  const categories = new Set();
 
-  const index = Math.round(track.scrollLeft / step);
-  return Math.max(0, Math.min(index, getTotalPages() - 1));
+  portfolioItems.forEach((item) => {
+    if (item.category) {
+      categories.add(item.category);
+    }
+  });
+
+  return [ALL_FILTER_LABEL, ...Array.from(categories).sort((a, b) => a.localeCompare(b, "pt-BR"))];
 }
 
-function renderDots() {
-  dotsWrap.innerHTML = "";
-  const pages = getTotalPages();
+function getFilteredPortfolio() {
+  return getSortedPortfolio(portfolioItems).filter((item) => {
+    return state.activeCategory === ALL_FILTER_LABEL || item.category === state.activeCategory;
+  });
+}
 
-  for (let i = 0; i < pages; i++) {
-    const dot = document.createElement("button");
-
-    dot.addEventListener("click", () => {
-      track.scrollTo({ left: i * getStep(), behavior: "smooth" });
-    });
-
-    dotsWrap.appendChild(dot);
+function renderFilters() {
+  if (!portfolioFilters) {
+    return;
   }
 
-  updateDots();
-}
+  portfolioFilters.innerHTML = "";
 
-function updateDots() {
-  const active = getActivePage();
-  const dots = dotsWrap.querySelectorAll("button");
+  getCategories().forEach((category) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "filter-chip" + (state.activeCategory === category ? " is-active" : "");
+    button.textContent = category;
+    button.setAttribute("aria-pressed", String(state.activeCategory === category));
 
-  dots.forEach((dot, i) => {
-    dot.classList.toggle("active", i === active);
+    button.addEventListener("click", () => {
+      state.activeCategory = category;
+      renderFilters();
+      renderPortfolio();
+    });
+
+    portfolioFilters.appendChild(button);
   });
 }
 
-track.addEventListener("scroll", () => requestAnimationFrame(updateDots));
-window.addEventListener("resize", renderDots);
+function updateSummary(items) {
+  if (!portfolioSummary) {
+    return;
+  }
 
-renderDots();
+  const count = items.length;
+  const label = count === 1 ? "referencia" : "referencias";
+  const categoryPart =
+    state.activeCategory === ALL_FILTER_LABEL
+      ? "do portfolio"
+      : 'em "' + state.activeCategory + '"';
 
+  portfolioSummary.textContent = "Mostrando " + count + " " + label + " " + categoryPart + ".";
+}
 
-// ========= APLICAR SÓ EM TELAS MAIORES QUE 950PX =========
-if(window.innerWidth >= 950){
+function createDetailList(details) {
+  if (!Array.isArray(details) || !details.length) {
+    return "";
+  }
 
-  // ========= DRAG (arrastar) =========
-  let isDown = false;
-  let startX = 0;
-  let scrollLeft = 0;
+  return details
+    .slice(0, 3)
+    .map((detail) => "<li>" + detail + "</li>")
+    .join("");
+}
 
-  track.addEventListener("mousedown", (e) => {
-    isDown = true;
-    startX = e.pageX - track.offsetLeft;
-    scrollLeft = track.scrollLeft;
-    track.style.cursor = "grabbing";
+function createPortfolioCard(item) {
+  const message =
+    "Ola! Vi o projeto " +
+    item.title +
+    " no portfolio da Miu Lab 3D e quero algo parecido. Pode me passar mais detalhes?";
+
+  return [
+    '<article class="portfolio-card">',
+    '  <button class="portfolio-media" type="button" data-lightbox-id="' + item.id + '">',
+    '    <img src="' +
+      item.image +
+      '" alt="' +
+      (item.imageAlt || item.title) +
+      '" loading="lazy" decoding="async">',
+    '    <span class="portfolio-zoom"><i class="bi bi-arrows-fullscreen"></i> Ampliar</span>',
+    "  </button>",
+    '  <div class="portfolio-content">',
+    '    <div class="portfolio-meta">',
+    '      <span class="badge badge--category">' + item.category + "</span>",
+    '      <span class="badge badge--label">' + (item.label || "Projeto realizado") + "</span>",
+    "    </div>",
+    '    <h3 class="portfolio-title">' + item.title + "</h3>",
+    '    <p class="portfolio-description">' + item.description + "</p>",
+    '    <ul class="portfolio-detail-list">' + createDetailList(item.details) + "</ul>",
+    '    <div class="portfolio-footer">',
+    '      <button class="button button--outline portfolio-view" type="button" data-lightbox-id="' +
+      item.id +
+      '">',
+    "        Ver imagem",
+    "      </button>",
+    '      <a class="button button--primary" href="' +
+      buildWhatsAppUrl(message) +
+      '" target="_blank" rel="noreferrer">',
+    "        Quero algo assim",
+    "      </a>",
+    "    </div>",
+    "  </div>",
+    "</article>"
+  ].join("");
+}
+
+function renderPortfolio() {
+  if (!portfolioGrid) {
+    return;
+  }
+
+  const filteredItems = getFilteredPortfolio();
+  updateSummary(filteredItems);
+
+  if (!filteredItems.length) {
+    portfolioGrid.innerHTML =
+      '<div class="portfolio-empty">' +
+      "<strong>Nada apareceu nessa categoria.</strong><br>" +
+      "Vale chamar no WhatsApp para conversar sobre uma ideia personalizada." +
+      "</div>";
+    return;
+  }
+
+  portfolioGrid.innerHTML = filteredItems.map(createPortfolioCard).join("");
+}
+
+function getPortfolioItemById(itemId) {
+  return portfolioItems.find((item) => item.id === itemId) || null;
+}
+
+function openLightbox(itemId) {
+  const item = getPortfolioItemById(itemId);
+
+  if (!item || !lightbox || !lightboxImage || !lightboxTitle || !lightboxDescription) {
+    return;
+  }
+
+  lightboxImage.src = item.image;
+  lightboxImage.alt = item.imageAlt || item.title;
+  lightboxTitle.textContent = item.title;
+  lightboxCategory.textContent = item.category;
+  lightboxDescription.textContent = item.description;
+
+  lightbox.hidden = false;
+  document.body.classList.add("lightbox-open");
+
+  if (lightboxClose) {
+    lightboxClose.focus();
+  }
+}
+
+function closeLightbox() {
+  if (!lightbox) {
+    return;
+  }
+
+  lightbox.hidden = true;
+  document.body.classList.remove("lightbox-open");
+}
+
+function bindPortfolioActions() {
+  if (!portfolioGrid) {
+    return;
+  }
+
+  portfolioGrid.addEventListener("click", (event) => {
+    const trigger = event.target.closest("[data-lightbox-id]");
+
+    if (!trigger) {
+      return;
+    }
+
+    openLightbox(trigger.getAttribute("data-lightbox-id"));
+  });
+}
+
+function bindLightbox() {
+  if (!lightbox) {
+    return;
+  }
+
+  lightbox.addEventListener("click", (event) => {
+    if (event.target.closest("[data-lightbox-close]") || event.target.closest(".lightbox-close")) {
+      closeLightbox();
+    }
   });
 
-  track.addEventListener("mouseleave", () => {
-    isDown = false;
-    track.style.cursor = "grab";
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !lightbox.hidden) {
+      closeLightbox();
+    }
+  });
+}
+
+function applyFeaturedVideo() {
+  if (!featuredVideoData || !featuredVideo) {
+    return;
+  }
+
+  featuredVideo.src = featuredVideoData.video;
+  featuredVideo.poster = featuredVideoData.poster || "";
+  featuredVideo.load();
+
+  if (featuredVideoTitle) {
+    featuredVideoTitle.textContent = featuredVideoData.title || "Projeto em video";
+  }
+
+  if (featuredVideoDescription) {
+    featuredVideoDescription.textContent = featuredVideoData.description || "";
+  }
+
+  if (featuredVideoCta && featuredVideoData.ctaMessage) {
+    featuredVideoCta.href = buildWhatsAppUrl(featuredVideoData.ctaMessage);
+  }
+}
+
+function syncHeader() {
+  if (!siteHeader) {
+    return;
+  }
+
+  siteHeader.classList.toggle("is-scrolled", window.scrollY > 8);
+}
+
+function bindMenu() {
+  if (!menuToggle || !siteNav) {
+    return;
+  }
+
+  menuToggle.addEventListener("click", () => {
+    const isOpen = siteNav.classList.toggle("is-open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
   });
 
-  track.addEventListener("mouseup", () => {
-    isDown = false;
-    track.style.cursor = "grab";
-  });
-
-  track.addEventListener("mousemove", (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - track.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    track.scrollLeft = scrollLeft - walk;
-  });
-
-  // ========= WHATSAPP =========
-  document.querySelectorAll(".whatsapp-btn").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-
-      const card = btn.closest(".product-card");
-      if (!card) return;
-
-      const name = card.dataset.name || "Product";
-      const price = card.dataset.price || "";
-
-      const message = `Olá! Eu quero solicitar: ${name} ${price ? "(" + price + ")" : ""}. Poderia me passar mais informações sobre entrega, cores e disponibilidades?`;
-      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-
-      window.open(url, "_blank");
+  siteNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      siteNav.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
     });
   });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 860) {
+      siteNav.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }
+  });
 }
-// ========= FIM DO SCRIPT =========
+
+function syncStaticInfo() {
+  if (heroPortfolioCount) {
+    heroPortfolioCount.textContent = String(portfolioItems.length);
+  }
+
+  if (currentYear) {
+    currentYear.textContent = String(new Date().getFullYear());
+  }
+}
+
+function init() {
+  syncStaticInfo();
+  renderFilters();
+  renderPortfolio();
+  bindPortfolioActions();
+  bindLightbox();
+  applyFeaturedVideo();
+  bindMenu();
+  syncHeader();
+}
+
+window.addEventListener("scroll", syncHeader);
+window.addEventListener("DOMContentLoaded", init);
