@@ -12,13 +12,13 @@ window.MIU_PORTFOLIO = {
       category: "Personagens",
       label: "Destaque",
       image: "images/produtos/banguela.jpeg",
-      imageAlt: "Peca do personagem Banguela produzida em impressao 3D",
+      imageAlt: "Peça do personagem Banguela produzida em impressão 3D",
       description:
-        "Peca decorativa com presenca forte e acabamento que valoriza o personagem sem perder a leitura dos detalhes.",
+        "Peça decorativa com presença forte e acabamento que valoriza o personagem sem perder a leitura dos detalhes.",
       details: [
-        "Otima inspiracao para presentes, estantes e setups geek.",
-        "Mostra bom equilibrio entre silhueta marcante e acabamento limpo.",
-        "Serve como base para pedidos inspirados em personagens iconicos."
+        "ótima inspiração para presentes, estantes e setups geek.",
+        "Mostra bom equilíbrio entre silhueta marcante e acabamento limpo.",
+        "Serve como base para pedidos inspirados em personagens icônicos."
       ],
       featured: true
     },
@@ -28,13 +28,13 @@ window.MIU_PORTFOLIO = {
       category: "Anime",
       label: "Destaque",
       image: "images/produtos/hunterxhunter.jpeg",
-      imageAlt: "Peca inspirada em Hunter x Hunter produzida em impressao 3D",
+      imageAlt: "Peça inspirada em Hunter x Hunter produzida em impressão 3D",
       description:
-        "Referencia de anime transformada em peca de impacto para colecao, presente ou decoracao personalizada.",
+        "Referência de anime transformada em peça de impacto para coleção, presente ou decoração personalizada.",
       details: [
-        "Boa inspiracao para projetos baseados em manga e anime.",
-        "Composicao pensada para destacar contraste e identidade visual.",
-        "Funciona bem como ponto de partida para novas versoes personalizadas."
+        "Boa inspiração para projetos baseados em manga e anime.",
+        "Composição pensada para destacar contraste e identidade visual.",
+        "Funciona bem como ponto de partida para novas versões personalizadas."
       ],
       featured: true
     },
@@ -44,9 +44,9 @@ window.MIU_PORTFOLIO = {
       category: "Games",
       label: "Destaque",
       image: "images/produtos/yoshi.jpeg",
-      imageAlt: "Peca do personagem Yoshi produzida em impressao 3D",
+      imageAlt: "Peça do personagem Yoshi produzida em impressão 3D",
       description:
-        "Uma peca vibrante que mostra como personagens de games podem ganhar volume, cor e presenca fora da tela.",
+        "Uma peça vibrante que mostra como personagens de games podem ganhar volume, cor e presenca fora da tela.",
       details: [
         "Boa referencia para pedidos com visual ludico e marcante.",
         "Fica muito bem em quarto, estante ou setup.",
