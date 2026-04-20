@@ -9,7 +9,7 @@ window.MIU_PORTFOLIO = {
     {
       id: "banguela",
       title: "Banguela",
-      category: "Personagens",
+      category: "Luminária",
       label: "Destaque",
       image: "images/produtos/banguela.jpeg",
       imageAlt: "Peça do personagem Banguela produzida em impressão 3D",
@@ -25,7 +25,7 @@ window.MIU_PORTFOLIO = {
     {
       id: "hunterxhunter",
       title: "Hunter x Hunter",
-      category: "Anime",
+      category: "Luminária",
       label: "Destaque",
       image: "images/produtos/hunterxhunter.jpeg",
       imageAlt: "Peça inspirada em Hunter x Hunter produzida em impressão 3D",
@@ -41,7 +41,7 @@ window.MIU_PORTFOLIO = {
     {
       id: "yoshi",
       title: "Yoshi",
-      category: "Games",
+      category: "Luminária",
       label: "Destaque",
       image: "images/produtos/yoshi.jpeg",
       imageAlt: "Peça do personagem Yoshi produzida em impressão 3D",
@@ -57,7 +57,7 @@ window.MIU_PORTFOLIO = {
     {
       id: "jack-skellington",
       title: "Suporte Alexa Jack Skellington",
-      category: "Decoracao Geek",
+      category: "Decoração Geek",
       label: "Grande procura",
       image: "images/produtos/jack.png",
       imageAlt: "Suporte para Alexa inspirado em Jack Skellington",
@@ -73,7 +73,7 @@ window.MIU_PORTFOLIO = {
     {
       id: "mao-caveira",
       title: "Suporte Alexa Mao Caveira",
-      category: "Decoracao Geek",
+      category: "Decoração Geek",
       label: "Grande procura",
       image: "images/produtos/maocaveira.png",
       imageAlt: "Suporte em formato de mao caveira para Alexa",
@@ -89,7 +89,7 @@ window.MIU_PORTFOLIO = {
     {
       id: "suporte-vr",
       title: "Suporte para Headset VR",
-      category: "Organizacao",
+      category: "Organização",
       label: "Grande procura",
       image: "images/produtos/vr.png",
       imageAlt: "Suporte para headset VR e controles produzido em impressao 3D",
