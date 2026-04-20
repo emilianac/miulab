@@ -101,6 +101,38 @@ window.MIU_PORTFOLIO = {
         "Pode inspirar novos suportes e bases feitas sob medida."
       ],
       featured: false
+    },
+    {
+      id: "topo-de-bolo",
+      title: "Topo de Bolo Personalizado",
+      category: "Decoração de Festas",
+      label: "Personalizado",
+      image: "images/produtos/topobolo.png",
+      imageAlt: "Topo de bolo personalizado com nome, idade e escrita em relevo",
+      description:
+        "Peça feita para decorar a festa com acabamento limpo, boa leitura visual e personalização nos detalhes.",
+      details: [
+        "Ótima referência para topo de bolo com nome, idade e tema da comemoração.",
+        "Combina presença visual com leveza para destacar a mesa principal.",
+        "Pode servir de base para novos pedidos personalizados para aniversários e eventos."
+      ],
+      featured: false
+    },
+    {
+      id: "lembrancinha-batizado",
+      title: "Lembrancinhas Personalizados",
+      category: "Lembrancinhas para Festas",
+      label: "Personalizado",
+      image: "images/produtos/batizado.png",
+      imageAlt: "Lembrancinha personalizada de batizado com anjinha em relevo",
+      description:
+        "Lembrancinha delicada e encantadora, perfeita para batizados, aniversários, casamentos, chá revelação e outras ocasiões especiais.",
+      details: [
+        "Boa inspiração para peças personalizadas com nome, data e tema religioso.",
+        "Mostra um resultado delicado, ideal para lembranças de eventos especiais.",
+        "Pode ser adaptada para outras celebrações com cores, textos e detalhes sob medida."
+      ],
+      featured: false
     }
   ],
   featuredVideo: {
